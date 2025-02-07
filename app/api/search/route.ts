@@ -54,7 +54,7 @@ Give me the brutal truth with citations.`;
 
     // OpenRouter Chat with optimized parameters
     const openrouter = await axios.post('https://openrouter.ai/api/v1/chat/completions', {
-      model: "anthropic/claude-3.5-sonnet:beta",
+      model: "anthropic/claude-3.5-sonnet",
       messages: [
         { role: "system", content: systemPrompt },
         { role: "user", content: userPrompt }
