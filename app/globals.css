@@ -1,0 +1,776 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --background: 222.2 84% 4.9%;
+    --foreground: 0 0% 100%;
+  }
+
+  .light {
+    color-scheme: light;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply text-white bg-[#1A1B1E];
+  }
+
+  /* Light mode styles */
+  .light body {
+    @apply text-gray-900 bg-white;
+  }
+}
+
+@layer components {
+  .prose {
+    @apply max-w-none text-gray-600 dark:text-gray-300;
+  }
+  
+  .prose p {
+    @apply mb-4 leading-7;
+  }
+
+  .prose strong {
+    @apply font-bold text-gray-900 dark:text-white;
+  }
+
+  /* Theme toggle button */
+  .theme-toggle {
+    @apply p-2 rounded-full bg-white dark:bg-[#25262B] shadow-lg hover:shadow-xl transition-all;
+  }
+
+  .theme-toggle svg {
+    @apply transition-transform duration-200;
+  }
+
+  .theme-toggle:hover svg {
+    @apply transform scale-110;
+  }
+
+  /* Gradient animations */
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .bg-gradient-animate {
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+  }
+
+  /* Banner animation */
+  @keyframes bannerGradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .banner-gradient {
+    background: linear-gradient(45deg, #4361EE, #7209B7, #4361EE);
+    background-size: 200% auto;
+    animation: bannerGradient 3s ease infinite;
+  }
+
+  /* Search box glow */
+  .search-glow:focus {
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1),
+                0 0 20px rgba(59, 130, 246, 0.1);
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .overflow-x-auto::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .overflow-x-auto {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  /* Custom scrollbar for the main content */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #4361EE, #7209B7);
+  }
+
+  /* Line clamp utilities */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Tooltip animations */
+  @keyframes tooltipFadeTop {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes tooltipFadeBottom {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Citation tooltip animations */
+  @keyframes citationFade {
+    from {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Tooltip positioning and animations */
+  .fixed.pointer-events-auto {
+    animation: citationFade 0.2s ease-out forwards;
+  }
+
+  .fixed.pointer-events-auto[style*="top:"] {
+    animation: tooltipFadeBottom 0.2s ease-out forwards;
+  }
+
+  .fixed.pointer-events-auto[style*="bottom:"] {
+    animation: tooltipFadeTop 0.2s ease-out forwards;
+  }
+
+  /* Loading animation */
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+
+  /* Button hover effects */
+  .button-glow:hover {
+    box-shadow: 0 0 20px rgba(67, 97, 238, 0.5);
+    transform: translateY(-2px);
+  }
+
+  /* Logo animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+  }
+
+  .logo-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* New animation classes */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  /* Skeleton loading animation */
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  /* Add shimmer effect to skeleton elements */
+  .bg-blue-200, .dark .dark\:bg-gray-700 {
+    background-image: linear-gradient(
+      90deg,
+      rgba(156, 163, 175, 0) 0,
+      rgba(156, 163, 175, 0.2) 20%,
+      rgba(156, 163, 175, 0.5) 60%,
+      rgba(156, 163, 175, 0)
+    );
+    background-size: 2000px 100%;
+    animation: shimmer 2s infinite linear;
+  }
+
+  .dark .dark\:bg-gray-700 {
+    background-image: linear-gradient(
+      90deg,
+      rgba(55, 65, 81, 0) 0,
+      rgba(55, 65, 81, 0.2) 20%,
+      rgba(55, 65, 81, 0.5) 60%,
+      rgba(55, 65, 81, 0)
+    );
+  }
+
+  /* Citation hover card animation */
+  @keyframes citationCardFade {
+    from {
+      opacity: 0;
+      transform: translate(-50%, 4px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  /* Citation hover card */
+  .absolute {
+    opacity: 0;
+    transform: translate(-50%, 4px);
+  }
+
+  .absolute[style*="display: block"] {
+    animation: citationCardFade 0.15s ease-out forwards;
+  }
+
+  /* Citation number style */
+  .text-blue-400 {
+    text-decoration: none;
+    padding: 0.1em 0.2em;
+    border-radius: 0.2em;
+    transition: all 0.15s ease-in-out;
+  }
+
+  .text-blue-400:hover {
+    background-color: rgba(96, 165, 250, 0.1);
+  }
+
+  /* Update the citation card animations */
+  @keyframes citationCardFade {
+    from {
+      opacity: 0;
+      transform: translate(-50%, 4px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  .citation-card {
+    animation: citationCardFade 0.15s ease-out forwards;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .citation-card {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Citation number style */
+  .text-blue-400 {
+    text-decoration: none;
+    padding: 0.1em 0.2em;
+    border-radius: 0.2em;
+    transition: all 0.15s ease-in-out;
+  }
+
+  .text-blue-400:hover {
+    background-color: rgba(96, 165, 250, 0.1);
+  }
+
+  /* Replace the form-search-button styles with these */
+  .search-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(to right, #4F46E5, #7C3AED);
+    color: white;
+    font-weight: 500;
+    border-radius: 9999px;
+    transition: all 0.2s;
+    white-space: nowrap;
+    height: 44px;
+  }
+
+  .search-button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  .search-button:active {
+    transform: translateY(0);
+  }
+
+  .search-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .search-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+  }
+
+  /* Contract address styles */
+  .contract-address {
+    position: relative;
+    transition: all 0.2s ease;
+  }
+
+  .contract-address:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(79, 70, 229, 0.1);
+  }
+
+  /* Copy button animation */
+  .group:hover .opacity-0 {
+    animation: fadeIn 0.2s ease-out forwards;
+  }
+
+  /* Token section gradient animation */
+  .token-gradient {
+    background-size: 200% auto;
+    animation: tokenGradient 3s ease infinite;
+  }
+
+  @keyframes tokenGradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Token card glow effect */
+  .token-card {
+    position: relative;
+  }
+
+  .token-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(45deg, #4361EE20, #7209B720);
+    border-radius: inherit;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+  }
+
+  .token-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Update focus ring color */
+  .focus-ring:focus {
+    box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.2);
+  }
+
+  /* Logo hover effect */
+  .logo-hover {
+    @apply transition-opacity duration-200;
+  }
+  
+  .logo-hover:hover {
+    @apply opacity-80;
+  }
+
+  /* Logo styling */
+  .logo-container {
+    @apply flex justify-center items-center w-full max-w-3xl;
+  }
+
+  .logo-hover {
+    @apply transition-all duration-200 transform;
+  }
+  
+  .logo-hover:hover {
+    @apply opacity-80 scale-[1.02];
+  }
+
+  /* Tokenomics cards */
+  .tokenomics-card {
+    @apply transition-all duration-200;
+  }
+
+  .tokenomics-card:hover {
+    @apply transform -translate-y-1 shadow-xl;
+  }
+
+  /* Gradient text animation */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#4361EE] to-[#7209B7];
+    background-size: 200% auto;
+    animation: gradientText 3s ease infinite;
+  }
+
+  @keyframes gradientText {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Pie chart animations */
+  @keyframes pieHover {
+    0% { stroke-width: 10; }
+    50% { stroke-width: 15; }
+    100% { stroke-width: 10; }
+  }
+
+  .pie-segment {
+    transition: all 0.3s ease;
+  }
+
+  .pie-segment:hover {
+    animation: pieHover 1s ease infinite;
+  }
+
+  /* Share button styles */
+  .share-button {
+    @apply relative inline-flex items-center px-3 py-1.5 rounded-md;
+    @apply hover:bg-blue-50 dark:hover:bg-blue-900/20;
+    @apply transition-all duration-200;
+  }
+
+  .share-button:hover {
+    @apply transform -translate-y-0.5;
+  }
+
+  .share-button:active {
+    @apply transform translate-y-0;
+  }
+
+  /* Roadmap timeline styles */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#4361EE] to-[#7209B7];
+    background-size: 200% auto;
+    animation: gradientText 3s ease infinite;
+  }
+
+  /* Timeline dot hover effect */
+  .relative .absolute {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .relative:hover .absolute {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(67, 97, 238, 0.5);
+  }
+
+  /* Timeline line glow effect */
+  .border-l-2 {
+    transition: border-color 0.3s ease;
+  }
+
+  .relative:hover .border-l-2 {
+    border-color: rgba(67, 97, 238, 0.5);
+  }
+
+  /* Phase hover effect */
+  .relative {
+    transition: transform 0.3s ease;
+  }
+
+  .relative:hover {
+    transform: translateX(8px);
+  }
+
+  /* Animated roadmap styles */
+  .roadmap-timeline {
+    @apply relative;
+  }
+
+  /* Animated gradient line */
+  .roadmap-line {
+    @apply absolute left-0 top-0 w-0.5 h-full;
+    background: linear-gradient(
+      to bottom,
+      #4361EE 0%,
+      #7209B7 50%,
+      #4361EE 100%
+    );
+    background-size: 200% 200%;
+    animation: gradientFlow 3s linear infinite;
+  }
+
+  @keyframes gradientFlow {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 0% 200%; }
+  }
+
+  /* Animated dots */
+  .roadmap-dot {
+    @apply absolute left-[-8px] top-0 w-4 h-4 rounded-full;
+    background: linear-gradient(45deg, #4361EE, #7209B7);
+    box-shadow: 0 0 10px rgba(67, 97, 238, 0.5);
+    animation: pulseDot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseDot {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+
+  /* Phase hover animation */
+  .roadmap-phase {
+    @apply relative pl-8 pb-8;
+    transition: all 0.3s ease;
+  }
+
+  .roadmap-phase:hover {
+    @apply transform translate-x-4;
+  }
+
+  .roadmap-phase:hover .roadmap-dot::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #4361EE50, #7209B750);
+    animation: ripple 1s ease-out infinite;
+  }
+
+  @keyframes ripple {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(2.5); opacity: 0; }
+  }
+
+  /* Shine effect for phase content */
+  .roadmap-content {
+    @apply relative overflow-hidden rounded-lg p-4;
+    background: linear-gradient(
+      45deg,
+      rgba(67, 97, 238, 0.05),
+      rgba(114, 9, 183, 0.05)
+    );
+  }
+
+  .roadmap-content::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transform: rotate(45deg);
+    animation: shine 3s ease-in-out infinite;
+  }
+
+  @keyframes shine {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+  }
+
+  /* Roadmap animations */
+  .roadmap-item {
+    transition: all 0.3s ease;
+  }
+
+  .roadmap-item:hover {
+    transform: translateX(8px);
+  }
+
+  .roadmap-item:hover .border-l-2 {
+    @apply border-blue-500;
+    box-shadow: 0 0 20px rgba(67, 97, 238, 0.2);
+  }
+
+  .roadmap-dot {
+    transition: all 0.3s ease;
+  }
+
+  .roadmap-item:hover .roadmap-dot {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(67, 97, 238, 0.5);
+  }
+
+  .roadmap-item:hover .roadmap-dot::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #4361EE50, #7209B750);
+    animation: ripple 1.5s ease-out infinite;
+  }
+
+  @keyframes ripple {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(2.5); opacity: 0; }
+  }
+
+  .roadmap-content {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .roadmap-item:hover .roadmap-content {
+    padding-left: 8px;
+  }
+
+  /* Gradient text animation */
+  .gradient-text {
+    background-size: 200% auto;
+    animation: gradientText 3s ease infinite;
+  }
+
+  @keyframes gradientText {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Custom pulse animation for dots */
+  @keyframes customPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.1); }
+  }
+
+  .animate-pulse {
+    animation: customPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Border glow effect */
+  .border-blue-500\/20 {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .roadmap-item:hover .border-blue-500\/20 {
+    border-color: rgba(67, 97, 238, 0.5);
+    box-shadow: 0 0 10px rgba(67, 97, 238, 0.2);
+  }
+
+  /* Social links hover effects */
+  .social-link {
+    @apply transition-all duration-200;
+  }
+
+  .social-link:hover {
+    @apply transform -translate-y-0.5;
+    box-shadow: 0 10px 30px -10px rgba(67, 97, 238, 0.25);
+  }
+
+  /* Icon hover effects */
+  .social-link:hover svg,
+  .social-link:hover img {
+    @apply transform scale-110;
+    transition: transform 0.2s ease;
+  }
+
+  /* Glow effect on hover */
+  .social-link:hover {
+    @apply bg-opacity-90;
+    box-shadow: 0 0 20px rgba(67, 97, 238, 0.1);
+  }
+
+  /* Copy tooltip styles */
+  .copy-tooltip {
+    @apply invisible opacity-0 transition-all duration-200;
+  }
+
+  .copy-tooltip.show {
+    @apply visible opacity-100;
+  }
+
+  /* Contract address button */
+  .contract-button {
+    @apply relative transition-all duration-200;
+    @apply hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  /* Update the copy message styles */
+  #copy-message {
+    z-index: 50;
+  }
+
+  /* Copy message transition */
+  #copy-message.opacity-0 {
+    opacity: 0;
+  }
+
+  #copy-message.opacity-100 {
+    opacity: 1;
+  }
+}
