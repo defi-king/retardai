@@ -21,17 +21,19 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'DeepShit AI',
+        alt: 'DeepShit AI - The Unfiltered Truth Engine',
       },
     ],
     type: 'website',
+    url: 'https://aideepshit.me',
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'DeepShit | The Unfiltered Truth Engine',
     description: 'Because Google\'s got a stick up its ass. Get brutally honest answers with our AI-powered search engine.',
-    creator: '@DeepShitAI',
-    site: '@DeepShitAI',
+    creator: '@deepshits_ai',
+    site: '@deepshits_ai',
+    images: ['/og-image.png'],
   },
 }
 
