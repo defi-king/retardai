@@ -3,7 +3,7 @@
 *"Because Google's got a stick up its ass"* 🖕
 
 A brutally honest AI search assistant that combines the knowledge of a Nobel laureate with the attitude of a drunk sailor. Built with Next.js, TypeScript, and zero f*cks given.
-
+Our Contract Address is 37QCiMNvcFYZyzxfNyfeesZgouWJihFom5cn5Xpdpump
 ## Features 💀
 
 - **Brutal Honesty**: Get answers that don't sugarcoat anything
