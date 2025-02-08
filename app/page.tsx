@@ -311,7 +311,7 @@ export default function Home() {
               <div className="relative">
                 <button 
                   onClick={() => {
-                    navigator.clipboard.writeText('4fuUFNuY44Eseznt4vaP2wmEQNr5eF2vMtQDRSQxdn7x');
+                    navigator.clipboard.writeText('37QCiMNvcFYZyzxfNyfeesZgouWJihFom5cn5Xpdpump');
                     const target = document.getElementById('copy-message');
                     if (target) {
                       target.classList.remove('opacity-0');
@@ -326,7 +326,7 @@ export default function Home() {
                     hover:bg-white/60 dark:hover:bg-[#25262B]/60 backdrop-blur-sm border border-transparent
                     hover:border-blue-100/50 dark:hover:border-blue-900/10 transition-colors duration-200"
                 >
-                  4fuUFNuY44Eseznt4vaP2wmEQNr5eF2vMtQDRSQxdn7x
+                  37QCiMNvcFYZyzxfNyfeesZgouWJihFom5cn5Xpdpump
                 </button>
                 <div 
                   id="copy-message"
@@ -357,7 +357,7 @@ export default function Home() {
           </a>
 
           <a 
-            href="https://pump.fun/board" 
+            href="https://pump.fun/coin/37QCiMNvcFYZyzxfNyfeesZgouWJihFom5cn5Xpdpump" 
             target="_blank" 
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/50 dark:bg-[#25262B]/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 border border-blue-100 dark:border-blue-900/20"
