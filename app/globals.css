@@ -773,4 +773,30 @@
   #copy-message.opacity-100 {
     opacity: 1;
   }
+
+  /* Sound toggle button */
+  .sound-toggle {
+    @apply p-2 rounded-full bg-white dark:bg-[#25262B] shadow-lg hover:shadow-xl transition-all;
+  }
+
+  .sound-toggle svg {
+    @apply transition-transform duration-200;
+  }
+
+  .sound-toggle:hover svg {
+    @apply transform scale-110;
+  }
+
+  /* Update the existing theme-toggle styles to match */
+  .theme-toggle, .sound-toggle {
+    @apply p-2 rounded-full bg-white dark:bg-[#25262B] shadow-lg hover:shadow-xl transition-all;
+  }
+
+  .theme-toggle svg, .sound-toggle svg {
+    @apply transition-transform duration-200;
+  }
+
+  .theme-toggle:hover svg, .sound-toggle:hover svg {
+    @apply transform scale-110;
+  }
 }

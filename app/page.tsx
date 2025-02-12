@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, forwardRef } from 'react';
-import { IconReload, IconSourceCode, IconArrowRight, IconSkull, IconSun, IconMoon, IconBrandX, IconBrandGithub, IconBrandTelegram } from '@tabler/icons-react';
+import { IconReload, IconSourceCode, IconArrowRight, IconSkull, IconSun, IconMoon, IconBrandX, IconBrandGithub, IconBrandTelegram, IconVolume, IconVolumeOff } from '@tabler/icons-react';
 import axios from 'axios';
 import { useTheme } from './providers';
 import Image from 'next/image';
@@ -73,7 +73,7 @@ const LoadingSkeleton = forwardRef<HTMLDivElement>((props, ref) => {
 LoadingSkeleton.displayName = 'LoadingSkeleton';
 
 export default function Home() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, soundEnabled, toggleSound } = useTheme();
   const [query, setQuery] = useState('');
   const [answer, setAnswer] = useState('');
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
@@ -97,8 +97,8 @@ export default function Home() {
     e.preventDefault();
     if (!query.trim()) return;
 
-    // Play sound effect
-    if (audioRef.current) {
+    // Play sound effect only if enabled
+    if (soundEnabled && audioRef.current) {
       audioRef.current.currentTime = 0;
       audioRef.current.play().catch(err => console.log('Audio play failed:', err));
     }
@@ -262,17 +262,30 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-[#1A1B1E] dark:to-[#1A1B1E]">
       {/* Theme toggle button */}
-      <button
-        onClick={toggleTheme}
-        className="fixed top-4 right-4 p-2 rounded-full bg-white dark:bg-[#25262B] shadow-lg hover:shadow-xl transition-all z-50"
-        aria-label="Toggle theme"
-      >
-        {theme === 'dark' ? (
-          <IconSun className="w-5 h-5 text-yellow-500" />
-        ) : (
-          <IconMoon className="w-5 h-5 text-blue-500" />
-        )}
-      </button>
+      <div className="fixed top-4 right-4 flex gap-2 z-50">
+        <button
+          onClick={toggleSound}
+          className="p-2 rounded-full bg-white dark:bg-[#25262B] shadow-lg hover:shadow-xl transition-all"
+          aria-label="Toggle sound"
+        >
+          {soundEnabled ? (
+            <IconVolume className="w-5 h-5 text-blue-500" />
+          ) : (
+            <IconVolumeOff className="w-5 h-5 text-gray-500" />
+          )}
+        </button>
+        <button
+          onClick={toggleTheme}
+          className="p-2 rounded-full bg-white dark:bg-[#25262B] shadow-lg hover:shadow-xl transition-all"
+          aria-label="Toggle theme"
+        >
+          {theme === 'dark' ? (
+            <IconSun className="w-5 h-5 text-yellow-500" />
+          ) : (
+            <IconMoon className="w-5 h-5 text-blue-500" />
+          )}
+        </button>
+      </div>
 
       {/* Announcement banner */}
       <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-center py-2 px-4">

@@ -52,9 +52,18 @@ function ThemeScript() {
               return 'dark'
             }
 
+            function getInitialSound() {
+              const storedSound = localStorage.getItem('soundEnabled')
+              return storedSound === null ? true : storedSound === 'true'
+            }
+
             const theme = getInitialTheme()
             document.documentElement.classList.add(theme)
             localStorage.setItem('theme', theme)
+            
+            if (localStorage.getItem('soundEnabled') === null) {
+              localStorage.setItem('soundEnabled', 'true')
+            }
           })()
         `,
       }}

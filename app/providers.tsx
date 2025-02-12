@@ -4,12 +4,19 @@ import { createContext, useContext, useEffect, useState } from 'react';
 
 type Theme = 'light' | 'dark';
 
-interface ThemeContextType {
-  theme: Theme;
+type ThemeContextType = {
+  theme: string;
   toggleTheme: () => void;
-}
+  soundEnabled: boolean;
+  toggleSound: () => void;
+};
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+export const ThemeContext = createContext<ThemeContextType>({
+  theme: 'dark',
+  toggleTheme: () => {},
+  soundEnabled: true,
+  toggleSound: () => {},
+});
 
 function getInitialTheme(): Theme {
   if (typeof window !== 'undefined') {
@@ -33,6 +40,7 @@ function getInitialTheme(): Theme {
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
   const [theme, setTheme] = useState<Theme>(getInitialTheme());
+  const [soundEnabled, setSoundEnabled] = useState(true);
 
   useEffect(() => {
     setMounted(true);
@@ -49,8 +57,22 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
   }, [theme, mounted]);
 
+  useEffect(() => {
+    const storedSound = localStorage.getItem('soundEnabled');
+    setSoundEnabled(storedSound === null ? true : storedSound === 'true');
+  }, []);
+
   const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'dark' ? 'light' : 'dark');
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.classList.remove('dark', 'light');
+    document.documentElement.classList.add(newTheme);
+  };
+
+  const toggleSound = () => {
+    setSoundEnabled(!soundEnabled);
+    localStorage.setItem('soundEnabled', (!soundEnabled).toString());
   };
 
   // Prevent hydration mismatch
@@ -59,7 +81,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, soundEnabled, toggleSound }}>
       {children}
     </ThemeContext.Provider>
   );
