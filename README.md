@@ -3,7 +3,10 @@
 *"Because Google's got a stick up its ass"* 🖕
 
 A brutally honest AI search assistant that combines the knowledge of a Nobel laureate with the attitude of a drunk sailor. Built with Next.js, TypeScript, and zero f*cks given.
-Our Contract Address is 37QCiMNvcFYZyzxfNyfeesZgouWJihFom5cn5Xpdpump
+
+Btw we do have a memecoin launched on solana, if you're interested in that here is contract address: `37QCiMNvcFYZyzxfNyfeesZgouWJihFom5cn5Xpdpump`
+We also have a website for it: https://aideepshit.me
+
 ## Features 💀
 
 - **Brutal Honesty**: Get answers that don't sugarcoat anything
