@@ -26,7 +26,7 @@ A brutally honest AI search assistant that combines the knowledge of a Nobel lau
 
 1. Clone this repository of pure chaos:
 ```bash
-git clone https://github.com/yourusername/unfiltered-truth-engine.git
+git clone https://github.com/defi-king/retardai.git
 cd unfiltered-truth-engine
 ```
 

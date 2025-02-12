@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, forwardRef } from 'react';
-import { IconReload, IconSourceCode, IconArrowRight, IconSkull, IconSun, IconMoon, IconBrandX } from '@tabler/icons-react';
+import { IconReload, IconSourceCode, IconArrowRight, IconSkull, IconSun, IconMoon, IconBrandX, IconBrandGithub, IconBrandTelegram } from '@tabler/icons-react';
 import axios from 'axios';
 import { useTheme } from './providers';
 import Image from 'next/image';
@@ -367,7 +367,27 @@ export default function Home() {
               alt="PumpFun" 
               className="w-5 h-5"
             />
-            <span className="text-sm font-medium text-gray-900 dark:text-white">Trade on PumpFun</span>
+            <span className="text-sm font-medium text-gray-900 dark:text-white">PumpFun</span>
+          </a>
+
+          <a 
+            href="https://github.com/defi-king/retardai" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/50 dark:bg-[#25262B]/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 border border-blue-100 dark:border-blue-900/20"
+          >
+            <IconBrandGithub className="w-5 h-5 text-gray-900 dark:text-white" />
+            <span className="text-sm font-medium text-gray-900 dark:text-white">GitHub</span>
+          </a>
+
+          <a 
+            href="https://t.me/deepshitai" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/50 dark:bg-[#25262B]/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 border border-blue-100 dark:border-blue-900/20"
+          >
+            <IconBrandTelegram className="w-5 h-5 text-gray-900 dark:text-white" />
+            <span className="text-sm font-medium text-gray-900 dark:text-white">Telegram</span>
           </a>
         </div>
 
